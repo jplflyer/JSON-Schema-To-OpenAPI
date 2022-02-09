@@ -1,0 +1,16 @@
+obj/
+
+# qtcreator generated files
+*.pro.user*
+
+# Vim temporary files
+.*.swp
+
+
+.d/
+bin/
+foo.json
+jpl-vitac-Sample-1.0.0-resolved.json
+lib/
+schema/
+
