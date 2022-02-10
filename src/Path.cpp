@@ -1,9 +1,14 @@
+#include <iostream>
 #include "OpenAPI.h"
 
+using std::cout;
+
+using std::endl;
 void OpenAPI::Path::fromJSON(const JSON &) {
 }
 
 JSON & OpenAPI::Path::toJSON(JSON &json) const {
+    json = JSON::object();
     setStringValue(json, "$ref", ref);
     setStringValue(json, "summary", summary);
     setStringValue(json, "description", description);
@@ -42,5 +47,6 @@ JSON & OpenAPI::Path::toJSON(JSON &json) const {
 
     translateAndSet(json, "servers", servers);
 
+    cout << "Path::toJSON()..." << json.dump(2) << endl;
     return json;
 }

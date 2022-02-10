@@ -317,6 +317,8 @@ public:
         typedef std::shared_ptr<Operation> Pointer;
         typedef ShowLib::JSONSerializableVector<Operation> Vector;
 
+        static Pointer make() { return std::make_shared<Operation>(); }
+
         void fromJSON(const JSON &) override;
         JSON &toJSON(JSON &) const override;
 
@@ -343,6 +345,8 @@ public:
         typedef std::shared_ptr<Path> Pointer;
         typedef ShowLib::JSONSerializableVector<Path> Vector;
         typedef ShowLib::JSONSerializableMap<Path> Map;
+
+        static Pointer make() { return std::make_shared<Path>(); }
 
         void fromJSON(const JSON &) override;
         JSON &toJSON(JSON &) const override;

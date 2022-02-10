@@ -77,6 +77,43 @@ void JSON_Schema_To_OpenAPI::copy() {
         if ( !ptr->description.empty() && info.description.empty() ) {
             info.description = ptr->description;
         }
+
+        //======================================================================
+        // Links in the JSONSchema turn into Paths.
+        //======================================================================
+        OpenAPI::Path::Map & paths = openAPI.paths;
+        for (const JSONSchema::Link::Pointer &link: ptr->links) {
+            OpenAPI::Path::Pointer path = nullptr;
+
+            for (const auto & it: paths) {
+                if (it.first == link->href) {
+                    path = it.second;
+                    break;
+                }
+            }
+
+            if (path == nullptr) {
+                path = OpenAPI::Path::make();
+                paths.insert(std::make_pair(link->href, path));
+            }
+
+            OpenAPI::Operation::Pointer op = OpenAPI::Operation::make();
+            if (link->method == "GET") {
+                path->getOperation = op;
+            }
+            else if (link->method == "PUT") {
+                path->putOperation = op;
+            }
+            else if (link->method == "POST") {
+                path->postOperation = op;
+            }
+            else if (link->method == "DELETE" || link->method == "DEL") {
+                path->deleteOperation = op;
+            }
+            else {
+                cout << "Unrecognized method: " << link->method << endl;
+            }
+        }
     }
 
 }

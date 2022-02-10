@@ -1,0 +1,13 @@
+{
+  "info": {
+    "description": "API for Managing Customers",
+    "title": "Schedule Customer API"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/schedule/v1/customers.json": {},
+    "/api/schedule/v1/customers/{(%2Fschemata%2Fcustomer%23%2Fdefinitions%2Fidentity)}/activate.json": {},
+    "/api/schedule/v1/customers/{(%2Fschemata%2Fcustomer%23%2Fdefinitions%2Fidentity)}/inactivate.json": {},
+    "/api/schedule/v1/customers/{(%2Fschemata%2Fcustomer%23%2Fdefinitions%2Fidentity)}/s_h_o_w.json": {}
+  }
+}
