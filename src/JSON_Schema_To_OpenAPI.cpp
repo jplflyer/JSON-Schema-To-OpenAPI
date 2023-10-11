@@ -113,6 +113,27 @@ void JSON_Schema_To_OpenAPI::copy() {
             else {
                 cout << "Unrecognized method: " << link->method << endl;
             }
+
+            op->summary = link->title;
+            op->description = link->description;
+
+            // I believe we're expecting either object or array.
+            if ( ! link->targetSchema.type.empty()) {
+            }
+            if ( ! link->schema.type.empty()) {
+                if (link->schema.type == "object") {
+                }
+                else if (link->schema.type == "array") {
+                }
+                else {
+                    cout << "Unrecognized schema.type: " << link->schema.type << endl;
+                }
+
+                for (auto it = link->schema.properties.begin(); it != link->schema.properties.end(); ++it) {
+                    string key = it->first;
+                    JSONSchema::Property::Pointer prop = it->second;
+                }
+            }
         }
     }
 

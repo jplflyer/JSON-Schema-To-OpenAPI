@@ -47,6 +47,5 @@ JSON & OpenAPI::Path::toJSON(JSON &json) const {
 
     translateAndSet(json, "servers", servers);
 
-    cout << "Path::toJSON()..." << json.dump(2) << endl;
     return json;
 }
